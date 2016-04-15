@@ -35,7 +35,8 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    self.leftArray = @[@"萧峰",@"金轮法王",@"灭绝师太",@"张三丰",@"洪七公"];
+    self.leftArray = @[@"萧峰",@"金轮法王",@"灭绝师太",@"张三丰",@"洪七公",@"般若心经",@"法相天地",@"万剑归一",@"浴火焚天"
+                       ,@"血遁",@"搜魂",@"入魔",@"尸毒"];
     self.rightArray = @[@"先天罡气",@"般若心经",@"法相天地",@"万剑归一",@"浴火焚天"
                         ,@"血遁",@"搜魂",@"入魔",@"尸毒"];
     
@@ -68,21 +69,24 @@
     .heightIs(44)
     .topSpaceToView(self.view,64);
     
-    self.levelButton = [[MCMenuButton alloc] initWithTitle:@"选择师傅"];
+    
+    // 这个之封装了 一个带有三角的按钮 ，至于他在什么位置，你可以随便设置，不需要使用这种sd 布局，其他的都可以，只是设置位置
+    
+    self.levelButton = [[MCMenuButton alloc] initWithTitle:@"选择师傅" titleStyle:TitleStyleArrowRight];
     [self.topView addSubview:self.levelButton];
     self.levelButton.sd_layout
     .leftSpaceToView(self.topView,0)
     .topSpaceToView(self.topView,0)
     .bottomSpaceToView(self.topView,0)
-    .widthRatioToView(self.topView,0.5);
+    .widthRatioToView(self.topView,1);
     
-    self.groupButton = [[MCMenuButton alloc] initWithTitle:@"选择功法"];
-    [self.topView addSubview:self.groupButton];
-    self.groupButton.sd_layout
-    .leftSpaceToView(self.levelButton,0)
-    .topSpaceToView(self.topView,0)
-    .bottomSpaceToView(self.topView,0)
-    .widthRatioToView(self.topView,0.5);
+//    self.groupButton = [[MCMenuButton alloc] initWithTitle:@"选择功法"];
+//    [self.topView addSubview:self.groupButton];
+//    self.groupButton.sd_layout
+//    .leftSpaceToView(self.levelButton,0)
+//    .topSpaceToView(self.topView,0)
+//    .bottomSpaceToView(self.topView,0)
+//    .widthRatioToView(self.topView,0.5);
     
     
     UIView *lineView = [[UIView alloc] init];
@@ -107,7 +111,19 @@
             [arrayM addObject:item];
         }
         
-        MCPopMenuViewController *popVc = [[MCPopMenuViewController alloc] initWithDataSource:arrayM fromView:weakSelf.topView];
+        UIView *footView = [[UIView alloc] init];
+        footView.backgroundColor = [UIColor whiteColor];
+        footView.frame = CGRectMake(0, 0, weakSelf.view.width, 44);
+        
+        UIButton *btn = [[UIButton alloc] init];
+        [btn setTitle:@"去购物" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor purpleColor];
+        btn.frame = CGRectMake(footView.width - 70 - 10, 2, 70, 35);
+        [footView addSubview:btn];
+        
+        
+        MCPopMenuViewController *popVc = [[MCPopMenuViewController alloc] initWithDataSource:arrayM fromView:weakSelf.topView customFootView:footView];
         [popVc show];
         popVc.didSelectedItemBlock = ^(MCPopMenuItem *item){
             

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef enum : NSUInteger {
+    TitleStyleDefault,
+    TitleStyleArrowRight,
+    
+} TitleStyle;
+
 @interface MCMenuButton : UIView
 
 /**
@@ -24,6 +31,11 @@
  *  文本字体
  */
 @property (nonatomic,assign)double font;
+
+/**
+ *  文本布局样式
+ */
+@property (nonatomic,assign)TitleStyle titleStyle;
 
 /**
  *  点击的回调
@@ -43,6 +55,15 @@
  */
 - (instancetype _Nonnull)initWithTitle:(NSString * _Nullable)title ;
 
+
+/**
+ *  初始化，制作最基础的初始化，可以用下边的属性进行更多设置
+ *
+ *  @param title 文本标题
+ *
+ *  @return 实例
+ */
+- (instancetype _Nonnull)initWithTitle:(NSString * _Nullable)title titleStyle:(TitleStyle)titleStyle;
 /**
  *  根据标题刷新数据
  *

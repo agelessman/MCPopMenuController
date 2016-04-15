@@ -16,11 +16,17 @@
 
 @property (nonatomic,nonnull,strong)UITableView *tableView;
 @property (nonatomic,nonnull,strong)UIView *coverView;
+
 @end
 
 @implementation MCPopMenuViewController
 
 - (instancetype)initWithDataSource:(NSArray *)dataSource fromView:(UIView *)fromView
+{
+    return  [self initWithDataSource:dataSource fromView:fromView customFootView:nil];
+}
+
+- (instancetype)initWithDataSource:(NSArray *)dataSource fromView:(UIView *)fromView customFootView:(UIView *)customFootView
 {
     self = [super init];
     
@@ -28,12 +34,14 @@
         
         _dataSource = dataSource;
         _fromView = fromView;
-       
+        _customerFootView = customFootView;
+        
+        [self.view addSubview:customFootView];
+        
     }
     
     return self;
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,6 +56,7 @@
 }
 
 #pragma mark ------------- 初始化控件 -------------
+
 - (void)setupTableView
 {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -55,6 +64,7 @@
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
+
 }
 - (void)setupCoverView
 {
@@ -92,13 +102,23 @@
     self.tableView.frame = CGRectMake(x, y, w, h);
     self.coverView.frame = CGRectMake(0, y, self.tableView.frame.size.width, self.view.bounds.size.height - y);
     
+    _customerFootView.frame = CGRectMake(0, CGRectGetMaxY(self.tableView.frame), _customerFootView.bounds.size.width, _customerFootView.bounds.size.height);
+    
 }
 - (CGFloat)getTableViewHeightWithTop:(CGFloat)top
 {
     CGFloat retHeight = 0;
     CGFloat H = self.view.bounds.size.height;
     CGFloat maxH = H - top - KbottomMagin; //最大的高度
+    
+    if (self.customerFootView) {
+        
+        maxH = maxH - self.customerFootView.bounds.size.height;
+    }
+    
     CGFloat dataH = _dataSource.count * Kheight; // 数据的高度
+    
+   
     
     if (dataH >= maxH) {
         

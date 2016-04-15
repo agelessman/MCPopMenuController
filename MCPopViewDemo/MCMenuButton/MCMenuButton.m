@@ -18,6 +18,11 @@
 
 - (instancetype)initWithTitle:(NSString *)title
 {
+    return [self initWithTitle:title titleStyle:TitleStyleDefault];
+}
+
+- (instancetype)initWithTitle:(NSString *)title titleStyle:(TitleStyle)titleStyle
+{
     self = [super init];
     if (self) {
         
@@ -27,6 +32,8 @@
         
         [self setupContentLabel];
         [self setupArrowView];
+        
+        _titleStyle = titleStyle;
     }
     
     return self;
@@ -74,6 +81,17 @@
         [self adjustLayout];
     }
 }
+
+- (void)setTitleStyle:(TitleStyle)titleStyle
+{
+    if (_titleStyle != titleStyle) {
+        
+        _titleStyle = titleStyle;
+        
+        [self adjustLayout];
+    }
+    
+}
 #pragma mark ------------ 私有方法 ----------
 
 /**
@@ -92,15 +110,30 @@
     
     CGRect rect = [_title boundingRectWithSize:CGSizeMake(contentMaxW, self.bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin attributes:contentdic context:nil];
     
-    CGFloat totalW = rect.size.width + magrin + arrowW; /// 文本和箭头总的宽度
-    
-    CGFloat leftMagrin = (self.bounds.size.width - totalW) * 0.5;
-    
-    self.contenetLabel.frame = CGRectMake(leftMagrin, 0, rect.size.width, self.bounds.size.height);
-    self.arrowView.frame = CGRectMake(CGRectGetMaxX(self.contenetLabel.frame)+ magrin, (self.bounds.size.height - arrowH) / 2, arrowW, arrowH);
+    switch (_titleStyle) {
+        case TitleStyleArrowRight:
+            
+            self.contenetLabel.frame = CGRectMake(magrin, 0, rect.size.width, self.bounds.size.height);
+            
+            self.arrowView.frame = CGRectMake(self.bounds.size.width - magrin - arrowW, (self.bounds.size.height - arrowH) / 2, arrowW, arrowH);
+            
+            break;
+            
+        default:
+        {
+            CGFloat totalW = rect.size.width + magrin + arrowW; /// 文本和箭头总的宽度
+            
+            CGFloat leftMagrin = (self.bounds.size.width - totalW) * 0.5;
+            
+            self.contenetLabel.frame = CGRectMake(leftMagrin, 0, rect.size.width, self.bounds.size.height);
+            self.arrowView.frame = CGRectMake(CGRectGetMaxX(self.contenetLabel.frame)+ magrin, (self.bounds.size.height - arrowH) / 2, arrowW, arrowH);
 
+        }
+            break;
+    }
     
     self.contenetLabel.text = _title;
+
 }
 
 - (void)refreshWithTitle:(NSString *)title

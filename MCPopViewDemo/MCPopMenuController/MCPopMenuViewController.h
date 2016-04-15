@@ -26,6 +26,11 @@
 @property (nonatomic,strong,nonnull,readonly)UIView *fromView;
 
 /**
+ *  控件将要展示在下边的view
+ */
+@property (nonatomic,strong,nonnull,readonly)UIView *customerFootView;
+
+/**
  *  点击了取消的回调
  */
 @property (nonatomic,strong,nullable)void(^dissBlock)(MCPopMenuItem *_Nullable item );
@@ -41,6 +46,14 @@
  */
 - (instancetype _Nonnull)initWithDataSource:(NSArray * _Nonnull)dataSource fromView:(UIView * _Nonnull)fromView;
 
+/**
+ *  初始化方法,初始化必须使用此方法
+ *
+ *  @param dataSource 数据源，是一个数组
+ *  @param fromView   展示在哪个控件的下方
+ *  @param fromView   展示在cell 下边自定义的view
+ */
+- (instancetype _Nonnull)initWithDataSource:(NSArray * _Nonnull)dataSource fromView:(UIView * _Nonnull)fromView customFootView:(UIView * _Nullable)customFootView;
 /**
  *  显示
  */
