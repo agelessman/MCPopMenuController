@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MCPopMenuPresentAnimator.h"
-#import "MCPopMenuDissmissAnimator.h"
 #import "MCPopMenuCell.h"
 
 

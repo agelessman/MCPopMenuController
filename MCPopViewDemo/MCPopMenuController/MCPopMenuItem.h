@@ -12,5 +12,5 @@
 
 @property (nonatomic,nullable,copy)NSString *itemid;
 @property (nonatomic,nullable,copy)NSString *itemtitle;
-
+@property (nonatomic,assign)BOOL isSelected;
 @end

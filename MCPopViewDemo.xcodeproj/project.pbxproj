@@ -14,14 +14,14 @@
 		9B48EBF81CAB754E00CB1109 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B48EBF71CAB754E00CB1109 /* Assets.xcassets */; };
 		9B48EBFB1CAB754E00CB1109 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B48EBF91CAB754E00CB1109 /* LaunchScreen.storyboard */; };
 		9B48EC0D1CAB757E00CB1109 /* MCPopMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B48EC041CAB757E00CB1109 /* MCPopMenuCell.m */; };
-		9B48EC0E1CAB757E00CB1109 /* MCPopMenuDissmissAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B48EC061CAB757E00CB1109 /* MCPopMenuDissmissAnimator.m */; };
 		9B48EC0F1CAB757E00CB1109 /* MCPopMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B48EC081CAB757E00CB1109 /* MCPopMenuItem.m */; };
-		9B48EC101CAB757E00CB1109 /* MCPopMenuPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B48EC0A1CAB757E00CB1109 /* MCPopMenuPresentAnimator.m */; };
 		9B48EC111CAB757E00CB1109 /* MCPopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B48EC0C1CAB757E00CB1109 /* MCPopMenuViewController.m */; };
 		9B48EC161CAB758D00CB1109 /* down_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B48EC131CAB758D00CB1109 /* down_arrow@2x.png */; };
 		9B48EC171CAB758D00CB1109 /* MCMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B48EC151CAB758D00CB1109 /* MCMenuButton.m */; };
 		9B48EC1D1CAB783800CB1109 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B48EC1A1CAB783800CB1109 /* UITableView+SDAutoTableViewCellHeight.m */; };
 		9B48EC1E1CAB783800CB1109 /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B48EC1C1CAB783800CB1109 /* UIView+SDAutoLayout.m */; };
+		9BF3914F1D325DE800879EF1 /* Test1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3914E1D325DE800879EF1 /* Test1ViewController.m */; };
+		9BF391551D3279E600879EF1 /* selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BF391541D3279E600879EF1 /* selected@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,12 +37,8 @@
 		9B48EBFC1CAB754E00CB1109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B48EC031CAB757E00CB1109 /* MCPopMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPopMenuCell.h; sourceTree = "<group>"; };
 		9B48EC041CAB757E00CB1109 /* MCPopMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPopMenuCell.m; sourceTree = "<group>"; };
-		9B48EC051CAB757E00CB1109 /* MCPopMenuDissmissAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPopMenuDissmissAnimator.h; sourceTree = "<group>"; };
-		9B48EC061CAB757E00CB1109 /* MCPopMenuDissmissAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPopMenuDissmissAnimator.m; sourceTree = "<group>"; };
 		9B48EC071CAB757E00CB1109 /* MCPopMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPopMenuItem.h; sourceTree = "<group>"; };
 		9B48EC081CAB757E00CB1109 /* MCPopMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPopMenuItem.m; sourceTree = "<group>"; };
-		9B48EC091CAB757E00CB1109 /* MCPopMenuPresentAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPopMenuPresentAnimator.h; sourceTree = "<group>"; };
-		9B48EC0A1CAB757E00CB1109 /* MCPopMenuPresentAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPopMenuPresentAnimator.m; sourceTree = "<group>"; };
 		9B48EC0B1CAB757E00CB1109 /* MCPopMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPopMenuViewController.h; sourceTree = "<group>"; };
 		9B48EC0C1CAB757E00CB1109 /* MCPopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPopMenuViewController.m; sourceTree = "<group>"; };
 		9B48EC131CAB758D00CB1109 /* down_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down_arrow@2x.png"; sourceTree = "<group>"; };
@@ -52,6 +48,9 @@
 		9B48EC1A1CAB783800CB1109 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
 		9B48EC1B1CAB783800CB1109 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
 		9B48EC1C1CAB783800CB1109 /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
+		9BF3914D1D325DE800879EF1 /* Test1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test1ViewController.h; sourceTree = "<group>"; };
+		9BF3914E1D325DE800879EF1 /* Test1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test1ViewController.m; sourceTree = "<group>"; };
+		9BF391541D3279E600879EF1 /* selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +90,8 @@
 				9B48EBEF1CAB754E00CB1109 /* AppDelegate.m */,
 				9B48EBF11CAB754E00CB1109 /* ViewController.h */,
 				9B48EBF21CAB754E00CB1109 /* ViewController.m */,
+				9BF3914D1D325DE800879EF1 /* Test1ViewController.h */,
+				9BF3914E1D325DE800879EF1 /* Test1ViewController.m */,
 				9B48EBF41CAB754E00CB1109 /* Main.storyboard */,
 				9B48EBF71CAB754E00CB1109 /* Assets.xcassets */,
 				9B48EBF91CAB754E00CB1109 /* LaunchScreen.storyboard */,
@@ -111,14 +112,11 @@
 		9B48EC021CAB757E00CB1109 /* MCPopMenuController */ = {
 			isa = PBXGroup;
 			children = (
+				9BF391541D3279E600879EF1 /* selected@2x.png */,
 				9B48EC031CAB757E00CB1109 /* MCPopMenuCell.h */,
 				9B48EC041CAB757E00CB1109 /* MCPopMenuCell.m */,
-				9B48EC051CAB757E00CB1109 /* MCPopMenuDissmissAnimator.h */,
-				9B48EC061CAB757E00CB1109 /* MCPopMenuDissmissAnimator.m */,
 				9B48EC071CAB757E00CB1109 /* MCPopMenuItem.h */,
 				9B48EC081CAB757E00CB1109 /* MCPopMenuItem.m */,
-				9B48EC091CAB757E00CB1109 /* MCPopMenuPresentAnimator.h */,
-				9B48EC0A1CAB757E00CB1109 /* MCPopMenuPresentAnimator.m */,
 				9B48EC0B1CAB757E00CB1109 /* MCPopMenuViewController.h */,
 				9B48EC0C1CAB757E00CB1109 /* MCPopMenuViewController.m */,
 			);
@@ -205,6 +203,7 @@
 			files = (
 				9B48EC161CAB758D00CB1109 /* down_arrow@2x.png in Resources */,
 				9B48EBFB1CAB754E00CB1109 /* LaunchScreen.storyboard in Resources */,
+				9BF391551D3279E600879EF1 /* selected@2x.png in Resources */,
 				9B48EBF81CAB754E00CB1109 /* Assets.xcassets in Resources */,
 				9B48EBF61CAB754E00CB1109 /* Main.storyboard in Resources */,
 			);
@@ -217,11 +216,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BF3914F1D325DE800879EF1 /* Test1ViewController.m in Sources */,
 				9B48EC1E1CAB783800CB1109 /* UIView+SDAutoLayout.m in Sources */,
 				9B48EBF31CAB754E00CB1109 /* ViewController.m in Sources */,
 				9B48EC171CAB758D00CB1109 /* MCMenuButton.m in Sources */,
-				9B48EC101CAB757E00CB1109 /* MCPopMenuPresentAnimator.m in Sources */,
-				9B48EC0E1CAB757E00CB1109 /* MCPopMenuDissmissAnimator.m in Sources */,
 				9B48EC1D1CAB783800CB1109 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				9B48EBF01CAB754E00CB1109 /* AppDelegate.m in Sources */,
 				9B48EC0D1CAB757E00CB1109 /* MCPopMenuCell.m in Sources */,
@@ -376,6 +374,7 @@
 				9B48EC011CAB754E00CB1109 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

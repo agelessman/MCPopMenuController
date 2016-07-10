@@ -1,18 +1,18 @@
 //
-//  ViewController.m
+//  Test1ViewController.m
 //  MCPopViewDemo
 //
-//  Created by 马超 on 16/3/30.
+//  Created by 马超 on 16/7/10.
 //  Copyright © 2016年 @qq:714080794 (交流qq). All rights reserved.
 //
 
-#import "ViewController.h"
+#import "Test1ViewController.h"
 #import "UIView+SDAutoLayout.h"
 #import "MCMenuButton.h"
 #import "MCPopMenuViewController.h"
 
 
-@interface ViewController ()<UIAlertViewDelegate>
+@interface Test1ViewController ()<UIAlertViewDelegate>
 /**
  *  头部筛选模块
  */
@@ -24,11 +24,11 @@
 @property (nonatomic,strong,nonnull)NSArray *rightArray;
 @end
 
-@implementation ViewController
+@implementation Test1ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     
     self.title = @"弹出菜单演示";
     
@@ -36,10 +36,8 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    self.leftArray = @[@"萧峰",@"金轮法王",@"灭绝师太",@"张三丰",@"洪七公",@"般若心经",@"法相天地",@"万剑归一",@"浴火焚天"
-                       ,@"血遁",@"搜魂",@"入魔",@"尸毒"];
-    self.rightArray = @[@"先天罡气",@"般若心经",@"法相天地",@"万剑归一",@"浴火焚天"
-                        ,@"血遁",@"搜魂",@"入魔",@"尸毒"];
+    self.leftArray = @[@"萧峰",@"金轮法王"];
+    self.rightArray = @[@"先天罡气",@"般若心经",@"法相天地"];
     
     [self setupTopView];
     
@@ -55,6 +53,7 @@
      *  7.欢迎提出宝贵意见 714080794@qq.com
      */
 }
+
 
 
 /**
@@ -96,7 +95,7 @@
     [self.topView addSubview:lineView];
     lineView.sd_layout.leftSpaceToView(self.topView,0).rightSpaceToView(self.topView,0).bottomEqualToView(self.topView).heightIs(0.5);
     
-
+    
     
     __weak typeof(self) weakSelf = self;
     //点击等级
@@ -110,28 +109,24 @@
             MCPopMenuItem *item = [[MCPopMenuItem alloc] init];
             item.itemid = @"0";
             item.itemtitle = weakSelf.leftArray[i];
+            
+            // 设置选中 这里可以用字符串比较，也可以用itemid比较(itemid是一个唯一的值)
+            MCPopMenuItem *selectedItem = weakSelf.levelButton.extend;
+            if (selectedItem && [selectedItem.itemtitle isEqualToString:item.itemtitle]) {
+                item.isSelected = YES;
+            }
+            
             [arrayM addObject:item];
         }
         
-        UIView *footView = [[UIView alloc] init];
-        footView.backgroundColor = [UIColor whiteColor];
-        footView.frame = CGRectMake(0, 0, weakSelf.view.width, 44);
-        
-        UIButton *btn = [[UIButton alloc] init];
-        [btn setTitle:@"去购物" forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-        btn.backgroundColor = [UIColor purpleColor];
-        btn.frame = CGRectMake(footView.width - 70 - 10, 2, 70, 35);
-        [footView addSubview:btn];
-        
-        
-        MCPopMenuViewController *popVc = [[MCPopMenuViewController alloc] initWithDataSource:arrayM fromView:weakSelf.topView customFootView:footView];
+
+        MCPopMenuViewController *popVc = [[MCPopMenuViewController alloc] initWithDataSource:arrayM fromView:weakSelf.topView];
         [popVc show];
         popVc.didSelectedItemBlock = ^(MCPopMenuItem *item){
             
             [weakSelf.levelButton refreshWithTitle:item.itemtitle];
             weakSelf.levelButton.extend = item;
-           
+            
         };
     };
     
@@ -145,6 +140,13 @@
             MCPopMenuItem *item = [[MCPopMenuItem alloc] init];
             item.itemid = @"0";
             item.itemtitle = weakSelf.rightArray[i];
+            
+            // 设置选中 这里可以用字符串比较，也可以用itemid比较(itemid是一个唯一的值)
+            MCPopMenuItem *selectedItem = weakSelf.groupButton.extend;
+            if (selectedItem && [selectedItem.itemtitle isEqualToString:item.itemtitle]) {
+                item.isSelected = YES;
+            }
+            
             [arrayM addObject:item];
         }
         
@@ -154,7 +156,7 @@
             
             [weakSelf.groupButton refreshWithTitle:item.itemtitle];
             weakSelf.groupButton.extend = item;
-          
+            
         };
     };
 }

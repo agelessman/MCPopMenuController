@@ -12,7 +12,7 @@
 #define Kheight 44
 #define KbottomMagin 44
 
-@interface MCPopMenuViewController () <UIViewControllerTransitioningDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface MCPopMenuViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,nonnull,strong)UITableView *tableView;
 @property (nonatomic,nonnull,strong)UIView *coverView;
@@ -80,9 +80,10 @@
         return;
     }
     UIViewController *controller = [self rootViewControllerOfWindos];
-    self.transitioningDelegate = self;
-    self.modalPresentationStyle = UIModalPresentationCustom;
-    [controller presentViewController:self animated:NO completion:nil];
+    [controller addChildViewController:self];
+    [controller.view addSubview:self.view];
+    
+    [self showAnimator];
 }
 
 /**
@@ -100,6 +101,7 @@
     CGFloat h = [self getTableViewHeightWithTop:y];
     
     self.tableView.frame = CGRectMake(x, y, w, h);
+    
     self.coverView.frame = CGRectMake(0, y, self.tableView.frame.size.width, self.view.bounds.size.height - y);
     
     _customerFootView.frame = CGRectMake(0, CGRectGetMaxY(self.tableView.frame), _customerFootView.bounds.size.width, _customerFootView.bounds.size.height);
@@ -139,10 +141,10 @@
  */
 - (UIViewController *)rootViewControllerOfWindos
 {
-    UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
-    if (window) {
-        return window.rootViewController;
-    }
+//    UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
+//    if (window) {
+//        return window.rootViewController;
+//    }
     return [self viewControllerOfView:_fromView];
 }
 
@@ -164,18 +166,6 @@
 }
 
 
-#pragma mark - UIViewControllerTransitioningDelegate
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
-{
-    //用户动画的扩展
-//    return [MCPopMenuPresentAnimator new];
-    return nil;
-}
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
-{
-//    return [MCPopMenuDissmissAnimator new];
-    return nil;
-}
 
 
 #pragma mark ------------- tableview delegate/ dataSource  ----------------
@@ -201,13 +191,46 @@
     MCPopMenuItem *item = _dataSource[indexPath.row];
     if (item) {
         __weak typeof(self) weakSelf = self;
-        [self dismissViewControllerAnimated:NO completion:^{
-            
-            if (weakSelf.didSelectedItemBlock) {
-                weakSelf.didSelectedItemBlock(item);
-            }
-        }];
+        
+        [self dissmissAnimator];
+        
+        if (weakSelf.didSelectedItemBlock) {
+            weakSelf.didSelectedItemBlock(item);
+        }
+
     }
+}
+
+#pragma mark ----------------- private method ---------
+- (void)showAnimator {
+    
+    // 添加动画
+    CGRect rect = self.tableView.frame;
+    
+    CGRect tempF = self.tableView.frame;
+    tempF.size.height = 0;
+    self.tableView.frame = tempF;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.tableView.frame = rect;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+- (void)dissmissAnimator {
+    
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        CGRect tempF = self.tableView.frame;
+        tempF.size.height = 0;
+        self.tableView.frame = tempF;
+        
+    } completion:^(BOOL finished) {
+        
+        [self removeFromParentViewController];
+        [self.view removeFromSuperview];
+    }];
 }
 #pragma mark ----------------- 重写点击事件 -------------
 
@@ -221,12 +244,15 @@
     if (!CGRectContainsPoint(self.tableView.frame, touchPoint)) {
         
         __weak typeof(self) weakSelf = self;
-        [self dismissViewControllerAnimated:NO completion:^{
-            
-            if (weakSelf.dissBlock) {
-                weakSelf.dissBlock(nil);
-            }
-        }];
+        
+         [self dissmissAnimator];
+        
+        if (weakSelf.dissBlock) {
+            weakSelf.dissBlock(nil);
+        }
+
     }
 }
+
+
 @end
